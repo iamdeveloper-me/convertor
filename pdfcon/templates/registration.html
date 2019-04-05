@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<title>Create Account</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<style type="text/css">
+    body {
+        color: #999;
+        background: #fafafa;
+        font-family: 'Roboto', sans-serif;
+    }
+    .form-control {
+        min-height: 41px;
+        box-shadow: none;
+        border-color: #e6e6e6;
+    }
+    .form-control:focus {
+        border-color: #00c1c0;
+    }
+    .form-control, .btn {        
+        border-radius: 3px;
+    }
+    .signup-form {
+        width: 425px;
+        margin: 0 auto;
+        padding: 30px 0;
+    }
+    .signup-form h2 {
+        color: #333;
+        font-weight: bold;
+        margin: 0 0 25px;
+    }
+    .signup-form form {
+        margin-bottom: 15px;
+        background: #fff;
+        border: 1px solid #f4f4f4;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 40px 50px;
+    }
+    .signup-form .form-group {
+        margin-bottom: 20px;
+    }
+    .signup-form label {
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .signup-form input[type="checkbox"] {
+        margin-top: 2px;
+    }    
+    .signup-form .btn {        
+        font-size: 16px;
+        font-weight: bold;
+        background: #00c1c0;
+        border: none;
+        min-width: 140px;
+        outline: none !important;
+    }
+    .signup-form .btn:hover, .signup-form .btn:focus {
+        background: #00b3b3;
+    }
+    .signup-form a {
+        color: #00c1c0;
+        text-decoration: none;
+    }   
+    .signup-form a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+  <div class="alert alert-success alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>{{ message }}</strong> 
+</div>
+</li>
+  {% endfor %}
+</ul>
+{% endif %}  
+ 
+<div class="signup-form">
+    <form id="register-form" action="/create/account" method="post" role="form" style="display: block;">{% csrf_token %}
+        <br>
+        <div class="form-group">
+            <input type="text" name="first_name" id="first_name" tabindex="1" class="form-control" placeholder="FirstName" value="{{first_name}}" required="required">
+        </div>
+        <div class="form-group">
+            <input type="text" name="last_name" id="last_name" tabindex="1" class="form-control" placeholder="LastName" value="{{last_name}}" required="required">
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="{{email}}">
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" name="confirm_password" id="confirm_password" tabindex="2" class="form-control" placeholder="Confirm Password" required="required">
+        </div>    
+        <div class="form-group">
+            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="btn btn-primary btn-lg" value="Create Account">
+        </div>
+    </form>
+   
+</body>
+</html>                            
